@@ -32,8 +32,22 @@ class Student(models.Model):
             return "{} {}".format(self.first_name, self.surname)
 
 
-
-
 class Judge(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100, blank=False, null=True)
+    middle_name = models.CharField(max_length=100, blank=True, null=True)
+    surname = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField(max_length=100, blank=False, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    available = models.BooleanField(default=False)
 
+    birth_date = models.DateField(verbose_name="Date of birth", null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    picture = models.ImageField(upload_to="profile", null=True, blank=True)
+
+    confirm_email = models.BooleanField(default=False)
+    date_registered = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return "{} {} {}".format(self.first_name, self.middle_name, self.surname)
+        

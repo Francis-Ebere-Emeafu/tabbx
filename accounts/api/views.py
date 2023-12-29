@@ -6,7 +6,7 @@ from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from accounts.models import Student
-from accounts.api.serializers import StudentSerializer, StudentRegisterSerializer
+from accounts.api.serializers import StudentSerializer, StudentRegisterSerializer, JudgeRegisterSerializer
 
 
 
@@ -37,9 +37,9 @@ class StudentView(viewsets.ModelViewSet):
     queryset = Student.objects.all()
 
 
-class StudentRegistrationAPIView1(APIView):
+class JudgeRegistrationAPIView1(APIView):
     def post(self, request, *args, **kwargs):
-        serializer = StudentRegisterSerializer(data=request.data)
+        serializer = JudgeRegisterSerializer(data=request.data)
         if serializer.is_valid():
             print(serializer)
             serializer.save()

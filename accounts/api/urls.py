@@ -14,7 +14,7 @@ router.register(r'students', views.StudentView, 'students-views')
 urlpatterns = [
     path('', include(router.urls)),
     path('register/student/', views.register_student, name="register_student"),
-    path('register-student/', views.StudentRegistrationAPIView1.as_view(), name="register_student_api"),
-    path('register-student-api/', views.StudentRegistrationAPIView.as_view(), name="register_student_api2"),
+    path('register-judge/', views.JudgeRegistrationAPIView1.as_view(), name="register_judge_api"),
+    path('register-student/', views.StudentRegistrationAPIView.as_view(), name="register_student_api"),
 ]
 
