@@ -36,13 +36,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
     # custom apps
-    'account.AccountConfig',
+    'accounts.apps.AccountsConfig',
 
     # third-party apps
-    'coresheaders',
+    'corsheaders',
     'rest_framework',
 ]
 
@@ -54,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'coresheader.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 
 ]
 
@@ -110,8 +111,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # WhiteListig LocalHost 3000 for REACT
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://localhost:8000',
 )
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -129,6 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

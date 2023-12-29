@@ -2,14 +2,9 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
-from states import STATE_CHOICES
+from .utils.states import STATE_CHOICES
+from .utils.gender import GENDER_CHOICES
 
-# Create your models here.
-GENDER_CHOICES = [
-    ('M', 'Male'),
-    ('F', 'Female'),
-    ('O', 'Others'),
-]
 
 
 class Student(models.Model):
@@ -41,3 +36,4 @@ class Student(models.Model):
 
 class Judge(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
